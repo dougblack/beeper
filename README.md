@@ -1,4 +1,4 @@
-ARDUINO + SMS
+Beeper
 =============
 
 This was part of The Hacker Olympics at TwilioCon 13.
