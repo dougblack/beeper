@@ -26,7 +26,13 @@ Next install [pySerial](http://pyserial.sourceforge.net/).
 ```bash
 $ pip install pyserial
 ```
-This is how we will communicate with our Arduino board using python. Oh boy.
+This is how we will communicate with our Arduino board using python. In my
+app.py, I have the following line that specifies which USB port on the
+computer to talk to and which baud rate to use.
+
+    ser = serial.Serial('/dev/tty.usbmodem1411', 9600)
+
+You might need to change this so pySerial is able to connect to your arduino.
 
 ## ngrok
 

@@ -3,7 +3,7 @@ from flask import request
 import serial
 import time
 
-ser = serial.Serial('/dev/tty.usbmodem1421', 9600)
+ser = serial.Serial('/dev/tty.usbmodem1411', 9600)
 
 # oh god why
 alpha = {'a':'12', 'b':'2111', 'c':'2121', 'd':'211', 'e':'1', 'f':'1121', 'g':'221',
@@ -25,14 +25,15 @@ def on(duration):
 @app.route('/', methods=['POST'])
 def write_out():
     body = request.form['Body'] # get SMS body
+    print body
     for char in body:
         signals = alpha[char.lower()]
         for signal in signals:
             if signal == '1':
-                on(0.5) # Send dot
+                on(0.2) # Send dot
             elif signal == '2':
-                on(1) # Send dash
-            time.sleep(1)
+                on(0.4) # Send dash
+            time.sleep(0.2)
 
     # Return empty TwiML so Twilio doesn't complain
     return '<Response></Response>'
